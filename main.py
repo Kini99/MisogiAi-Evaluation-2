@@ -1,6 +1,7 @@
 from fastapi import FastAPI
-from database import engine, Base
 from contextlib import asynccontextmanager
+from database import engine, Base
+from routes import router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -8,4 +9,6 @@ async def lifespan(app: FastAPI):
         await conn.run_sync(Base.metadata.create_all)   
     yield
 
-app = FastAPI(title="Digital Wallet")
+app = FastAPI(title="Digital Wallet", lifespan=lifespan)
+
+app.include_router(router)  
