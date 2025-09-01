@@ -1,5 +1,8 @@
 fastapi
 pydantic
 sqlalchemy
+sqlalchemy[asyncio]
+sqlalchemy.orm
+aiosqlite
 uvicorn
 streamlit

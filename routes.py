@@ -221,12 +221,12 @@ async def transfer_money(sender_user_id: str, recipient_user_id: str, amount: fl
     }
     
 # Get transfer detail by ID
-@router.get("/transfer/{transfer_id}", response_model=TransferOut)
-async def get_transfer_detail(transfer_id: str, db: AsyncSession = Depends(get_db)):
-    result = await db.execute(select(Transaction).where(id==transfer_id))
-    transaction = result.scalars().first()
-    if not transaction:
-        raise HTTPException(status_code=404, detail="Transfer not found")
-    if not transaction.recipient_user_id:
-        raise HTTPException(status_code=400, detail="Not a transfer transaction")
-    return transaction
+# @router.get("/transfer/{transfer_id}", response_model=TransferOut)
+# async def get_transfer_detail(transfer_id: str, db: AsyncSession = Depends(get_db)):
+#     result = await db.execute(select(Transaction).where(id==transfer_id))
+#     transaction = result.scalars().first()
+#     if not transaction:
+#         raise HTTPException(status_code=404, detail="Transfer not found")
+#     if not transaction.recipient_user_id:
+#         raise HTTPException(status_code=400, detail="Not a transfer transaction")
+#     return transaction

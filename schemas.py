@@ -11,7 +11,7 @@ class UserBase(Base):
     created_at: Optional[DateTime] = None
     updated_at: Optional[DateTime] = None
 
-class UserOut(UserBase):
+class UserOut(Base):
     user_id: int
     username:str
     email:str
